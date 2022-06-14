@@ -28,13 +28,11 @@ isChargeRateOutOfRange = function(charge_rate) {
 }
 
 function batteryIsOk(temperature, soc, charge_rate) {
-    if (isTemperatureOutOfRange(temperature) || isSocOutOfRange(soc) || isChargeRateOutOfRange(charge_rate)) {        
-        return false;
-    } 
-    return true;
+   return !(isTemperatureOutOfRange(temperature) || isSocOutOfRange(soc) || isChargeRateOutOfRange(charge_rate))       
 }
 
 expect(batteryIsOk(25, 70, 0.7)).to.be.true;
 expect(batteryIsOk(30, 85, 0)).to.be.false;
 expect(batteryIsOk(30, 70, 0.9)).to.be.false;
 expect(batteryIsOk(50, 70, 0.9)).to.be.false;
+expect(batteryIsOk(50, 85, 0.9)).to.be.false;
