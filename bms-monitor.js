@@ -1,30 +1,34 @@
 const {expect} = require('chai');
 
+isOutOfRange = function(value, min=null, max=null) { 
+  return value < min || value > max;
+}                            
+
 isTemperatureOutOfRange = function(temperature) {    
-    let isOutOfRange = false;
-    if (temperature > 45 || temperature < 0) {
+    let isOutOfrange = false;
+    if (isOutOfRange(temperature, 0, 45)) {
         console.log('Temperature is out of range!');
-        isOutOfRange = true;
+        isOutOfrange = true;
     }
-    return isOutOfRange;
+    return isOutOfrange;
 }
 
 isSocOutOfRange = function(soc) {
-    let isOutOfRange = false;
-    if (soc > 80 || soc < 20) {
+    let isOutOfrange = false;
+    if (isOutOfRange(soc, 20, 80)) {
         console.log('State of Charge is out of range!');
-        isOutOfRange = true;
+        isOutOfrange = true;
     }
-    return isOutOfRange;
+    return isOutOfrange;
 }
 
 isChargeRateOutOfRange = function(charge_rate) { 
-    let isOutOfRange = false;
-    if (charge_rate > 0.8) {
+    let isOutOfrange = false;
+    if (isOutOfRange(charge_rate, null, 0.8)) {
         console.log('Charge rate is out of range!');
-        isOutOfRange = true;
+        isOutOfrange = true;
     }
-    return isOutOfRange;
+    return isOutOfrange;
 }
 
 function batteryIsOk(temperature, soc, charge_rate) {
